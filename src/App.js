@@ -6,7 +6,7 @@ function App() {
     <div>
       <SignUp /> 
     </div>
-  )
+  )// comment
 }
 
 export default App
