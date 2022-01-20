@@ -4,7 +4,7 @@ import SignUp from './container/Auth/SignUp.jsx'
 function App() {
   return (
     <div>
-      <SignUp />
+      <SignUp /> 
     </div>
   )
 }
