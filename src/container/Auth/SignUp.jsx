@@ -1,99 +1,59 @@
-import React, { useState, useEffect } from "react";
-import Input from "../../components/Input";
-import apiClient from "../../utils/axios";
+import React, { useState,  } from 'react';
+import { Link } from 'react-router-dom';
+import Container from './styles/StySignUp';
+import img from '../../assets/img/imgSignUp.png';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 
-export default function SignUp() {
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    lang: 'uz',
-    image: 'https://www.computerhope.com/jargon/g/guest-user.jpg',
+
+
+
+function SignUp() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    phone: '',
     // address: '',
-    password: "",
   });
 
-  const handleChange = (e) => {
+
+  const inputHandler = (e) => {
     const { name, value } = e.target;
-    setUser({
-      ...user,
-      [name]: value,
-    });
-  };
+    setFormData({ ...formData, [name]: value });
+  }
 
-  useEffect(() => {
-      
-      
-  }, []);
-
-  onsubmit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
-    apiClient.post("/sign-up", user).then((res) => {
-        console.log(res);
-        localStorage.setItem('token', res.data.token);
-    }).catch((err) => {
-        console.log(err);
-    });
-    };
+    console.log(formData);
+  }
 
+  console.log(formData);
 
-    return (
-      <div>
-        <form>
-          <Input
-            type="text"
-            placeholder="First Name"
-            name="firstName"
-            value={user.firstName}
-            onChange={handleChange}
-            label="First Name"
-          />
-          <Input
-            type="text"
-            placeholder="Last Name"
-            name="lastName"
-            value={user.lastName}
-            onChange={handleChange}
-            label="Last Name"
-          />
-          <Input
-            type="tel"
-            placeholder="Phone"
-            name="phone"
-            value={user.phone}
-            onChange={handleChange}
-            label="Phone"
-          />
-          <Input
-            type="email"
-            placeholder="Email"
-            name="email"
-            value={user.email}
-            onChange={handleChange}
-            label="Email"
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={user.password}
-            onChange={handleChange}
-            label="Password"
-          />
-          {/* <Input
-            type="text"
-            placeholder="Address"
-            name="address"
-            value={user.address}
-            onChange={handleChange}
-            label="Address"
-            /> */}
-          <button type="submit">
-              Sign Up
-          </button>
-        </form>
+  const { firstName, lastName, email, password, phone } = formData;
+
+  return <Container>
+      <div className="container__img">
+        <img src={img} alt="left description"/>
       </div>
-    );
-  };
+      <form onSubmit={submitHandler} className="form">
+        <h1 className="form__title">
+          Sign Up
+        </h1>
+        <p className="form__subtitle">
+          {/* Already have an account? <Link to="/sign-in">Sign In</Link>  */}
+        </p>
+        <div className="form__group">
+          <Input name="firstName" label="First Name" type="text" value={firstName} placeholder="First Name" onChange={inputHandler} />
+          <Input name="lastName" label="Last Name" type="text" value={lastName} placeholder="Last Name" onChange={inputHandler} />
+          <Input name="phone" label="Enter phone" type="tel" value={phone} placeholder="Enter phone" onChange={inputHandler} />
+          <Input name="email" label="Enter email" type="email" value={email} placeholder="Enter email" onChange={inputHandler} />
+          <Input name="password" label="Enter password" type="password" value={password} placeholder="Enter password" onChange={inputHandler} />
+          <Button title="Next step" type={'submit'} />
+        </div>
+      </form>
+  </Container>;
+}
 
+export default SignUp;
