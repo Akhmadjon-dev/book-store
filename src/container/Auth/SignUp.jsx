@@ -1,5 +1,6 @@
 import React, { useState,  } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import client from '../../utils/axios';
 import Container from './styles/StySignUp';
 import img from '../../assets/img/imgSignUp.png';
 import Input from '../../components/Input';
@@ -15,8 +16,9 @@ function SignUp() {
     email: '',
     password: '',
     phone: '',
-    // address: '',
   });
+  const history = useNavigate();
+
 
 
   const inputHandler = (e) => {
@@ -24,9 +26,20 @@ function SignUp() {
     setFormData({ ...formData, [name]: value });
   }
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    try {
+      const res = await client.post('/sign-up', formData);
+      if(res.status === 201) {
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        history('/');
+      }
+
+    }
+    catch (error) {
+      console.log(error);
+    }
   }
 
   console.log(formData);
@@ -42,7 +55,7 @@ function SignUp() {
           Sign Up
         </h1>
         <p className="form__subtitle">
-          {/* Already have an account? <Link to="/sign-in">Sign In</Link>  */}
+          Already have an account? <Link to="/sign-in">Sign In</Link> 
         </p>
         <div className="form__group">
           <Input name="firstName" label="First Name" type="text" value={firstName} placeholder="First Name" onChange={inputHandler} />

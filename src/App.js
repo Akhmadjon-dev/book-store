@@ -7,17 +7,28 @@ import SignIn from './container/Auth/SignIn'
 
 
 function App() {
-  return (
-    <Fragment>
-      <Routes>
-        <Route path="/" element={<h3>Home</h3>} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/not-found" element={<h3>Not Found</h3>} />
-        <Route path="*" element={<Navigate to="/not-found" />} />
-      </Routes>
-    </Fragment>
-  )// comment
-}
+  const user = localStorage.getItem('user')
 
+  if(user){
+    return (
+      <Fragment>
+        <Routes>
+          <Route path="/" element={<h3>Home</h3>} />
+          <Route path="/not-found" element={<h3>Not Found</h3>} />
+          <Route path="*" element={<Navigate to="/not-found" />} />
+        </Routes>
+      </Fragment>
+    )
+  } else{
+    return (
+      <Fragment>
+        <Routes>
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="*" element={<Navigate to="/sign-in" />} />
+        </Routes>
+      </Fragment>
+    )
+  }
+}
 export default App
