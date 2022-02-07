@@ -1,9 +1,10 @@
 import React, { useState,  } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Container from './styles/StySignUp';
 import img from '../../assets/img/imgSignUp.png';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import client from '../../utils/axios';
 
 
 
@@ -14,18 +15,31 @@ function SignIn() {
     password: ''
   });
 
-
+  const navigate = useNavigate()
+  
   const inputHandler = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  }
+ 
 
-  console.log(formData);
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await client.post('/login', formData);
+      if(res.status === 200) {
+        localStorage.setItem('user', JSON.stringify(res.data.user))
+        localStorage.setItem('token', res.data.token)
+        
+        navigate('/')
+      } 
+      console.log(res);
+    }
+    catch (error){
+      console.log(error)  
+    }
+  }
 
   const { email, password } = formData;
 

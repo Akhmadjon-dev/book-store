@@ -9,6 +9,7 @@ import Home from './container/Auth/Nav'
 
 function App() {
   const user = localStorage.getItem('user')
+  console.log(user);
 
   if(user){
     return (
