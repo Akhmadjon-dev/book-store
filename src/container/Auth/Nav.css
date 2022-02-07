@@ -1,0 +1,29 @@
+nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+}
+
+nav .nav__logo {
+    text-transform: uppercase;
+    color: #C9AC8C;
+}
+
+nav .container, .nav__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__links {
+    gap: 40px;
+
+}
+
+.nav__links li {
+    border-bottom: 1px solid transparent;
+}
+
+.nav__links li:hover {
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+}
