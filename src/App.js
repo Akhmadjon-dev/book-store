@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 
@@ -6,10 +6,26 @@ import SignUp from './container/Auth/SignUp'
 import SignIn from './container/Auth/SignIn'
 import Home from './container/Home'
 import Header from './components/Header'
+import client from './utils/axios'
 
 
 function App() {
   const user = localStorage.getItem('user')
+
+  useEffect(() => {
+  
+    getUsers()
+
+    
+  }, []);
+
+
+  const getUsers = async () => {
+    const res = await client.get('/users');
+    console.log(res);
+  }
+
+
   console.log(user);
 
   if(user){

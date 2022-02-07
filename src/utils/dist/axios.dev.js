@@ -9,18 +9,24 @@ var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var Client = _axios["default"].create({
+var client = _axios["default"].create({
   baseURL: 'http://localhost:8000/api',
   timeout: 10000
 });
 
-Client.interceptors.request.use(function (config) {
+client.interceptors.request.use(function (config) {
   console.log('Request Interceptor', config);
+  var token = localStorage.getItem('token');
+
+  if (token) {
+    config.headers.Authorization = "Bearer ".concat(token);
+  }
+
   return config;
 });
-Client.interceptors.response.use(function (response) {
+client.interceptors.response.use(function (response) {
   console.log('Response Interceptor', response);
   return response;
 });
-var _default = Client;
+var _default = client;
 exports["default"] = _default;
