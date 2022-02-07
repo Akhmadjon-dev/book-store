@@ -27,6 +27,7 @@ const container = sty.div`
     .form{
         width: 50%;
         height: auto;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
