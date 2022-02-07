@@ -32,7 +32,8 @@ function SignIn() {
         localStorage.setItem('user', JSON.stringify(res.data.user))
         localStorage.setItem('token', res.data.token)
         
-        navigate('/')
+        // navigate('/', { replace: true });
+        window.location = ('/')
       } 
       console.log(res);
     }

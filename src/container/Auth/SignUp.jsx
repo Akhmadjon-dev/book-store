@@ -33,7 +33,8 @@ function SignUp() {
       if(res.status === 201) {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user', JSON.stringify(res.data.user));
-        navigate('/');
+        // navigate('/', { replace: true });
+        window.location = ('/')
       }
 
     }

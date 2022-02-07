@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/not-found" element={<h3>Not Found</h3>} />
-          <Route path="*" element={<Navigate to="/not-found" />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Fragment>
     )
