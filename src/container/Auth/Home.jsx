@@ -1,9 +1,14 @@
 import React from 'react';
+import Nav  from './Nav'
+import Hero  from './Hero'
 
 function Home() {
-  return <div>
-      <h3>Home Page</h3>
-  </div>;
+  return (
+    <div>
+        <Nav />
+        <Hero />
+    </div>
+  )
 }
 
 export default Home;

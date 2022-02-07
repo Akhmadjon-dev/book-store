@@ -4,7 +4,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 
 import SignUp from './container/Auth/SignUp'
 import SignIn from './container/Auth/SignIn'
-import Home from './container/Auth/Home'
+import Home from './container/Auth/Nav'
 
 
 function App() {
