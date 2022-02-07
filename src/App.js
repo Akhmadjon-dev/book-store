@@ -7,6 +7,7 @@ import SignIn from './container/Auth/SignIn'
 import Home from './container/Home'
 import Header from './components/Header'
 import client from './utils/axios'
+import Add from './container/Add'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/home/*" element={<Home />} />
+          <Route path="/form" element={<Add />} />
           <Route path="/not-found" element={<h3>Not Found</h3>} />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>

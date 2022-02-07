@@ -19,7 +19,7 @@ function Nav() {
                   <Link to="/home/authors">Authors</Link>
                 </li>
                 <li>
-                  <Link to="/books-add" >Forum</Link>
+                  <Link to="/form" >Form</Link>
                 </li>
                 <li>
                   profile
