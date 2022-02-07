@@ -5,6 +5,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import SignUp from './container/Auth/SignUp'
 import SignIn from './container/Auth/SignIn'
 import Home from './container/Home'
+import Header from './components/Header'
 
 
 function App() {
@@ -14,10 +15,11 @@ function App() {
   if(user){
     return (
       <Fragment>
+        <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home/*" element={<Home />} />
           <Route path="/not-found" element={<h3>Not Found</h3>} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       </Fragment>
     )
