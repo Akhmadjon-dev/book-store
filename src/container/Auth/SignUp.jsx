@@ -17,7 +17,7 @@ function SignUp() {
     password: '',
     phone: '',
   });
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
 
 

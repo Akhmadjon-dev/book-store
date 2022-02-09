@@ -7,7 +7,7 @@ import SignIn from './container/Auth/SignIn'
 import Home from './container/Home'
 import Header from './components/Header'
 import client from './utils/axios'
-
+import AddContent from './container/AddContent';
 
 function App() {
   const user = localStorage.getItem('user')
@@ -36,6 +36,7 @@ function App() {
           <Route path="/home/*" element={<Home />} />
           <Route path="/not-found" element={<h3>Not Found</h3>} />
           <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="/add" element={<AddContent />} />
         </Routes>
       </Fragment>
     )
