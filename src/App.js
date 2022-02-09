@@ -7,7 +7,8 @@ import SignIn from './container/Auth/SignIn'
 import Home from './container/Home'
 import Header from './components/Header'
 import client from './utils/axios'
-
+import AddAuthor from './container/AddContent/AddAuthor';
+import AddBook from './container/AddContent/AddBook';
 
 function App() {
   const user = localStorage.getItem('user')
@@ -15,18 +16,28 @@ function App() {
   useEffect(() => {
   
     getUsers()
-
+    getBooks()
     
   }, []);
+
+  const getBooks = async () => {
+    try {
+      const res = await client.get('/books')
+      if(res.status === 200) {
+        console.log("book list", res)
+      }
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
 
 
   const getUsers = async () => {
     const res = await client.get('/users');
-    console.log(res);
+    console.log("user list", res);
   }
 
-
-  console.log(user);
 
   if(user){
     return (
@@ -36,6 +47,8 @@ function App() {
           <Route path="/home/*" element={<Home />} />
           <Route path="/not-found" element={<h3>Not Found</h3>} />
           <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="/add-book" element={<AddBook />} />
+          <Route path="/add-author" element={<AddAuthor />} />
         </Routes>
       </Fragment>
     )

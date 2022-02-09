@@ -11,18 +11,25 @@ const container = sty.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
     .container__img{
         width: 50%;
         height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(201, 172, 140, 0.93);
+        flex-direction: column;
+        background: #C9AC8C;
         img{
-            width: 100%;
-            height: 100%;
+            width: 300px;
+            height: 482px;
             object-fit: contain;
+            background: ${colors.white};
         }
+        .book_title {
+            margin-top: 20px;
+        }
+        
     }
     .form{
         width: 50%;
@@ -31,13 +38,14 @@ const container = sty.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background-color: ${colors.white};
+        background-color: ${colors.primary};
         padding: 0 90px 0 90px;
         .form__title{
             font-weight: 900;
             font-size: 36px;
             line-height: 51px;
-            color: ${colors.black};
+            color: ${colors.white};
+            margin: 15px 0;
         }
         .form__subtitle{
             font-weight: normal;
@@ -54,6 +62,12 @@ const container = sty.div`
             & > *{
                 max-width: 430px;
             }
+        }
+        label {
+            color: ${colors.white};
+        }
+        .form__subtitle{
+            color: ${colors.white}
         }
     }
 `
