@@ -15,9 +15,6 @@ function AddAuthor() {
     lastName: '',
     date_of_birth: '',
     date_of_death: '',
-    price: '',
-    country: '',
-    description: '',
   });
   //const navigate = useNavigate();
 
@@ -31,11 +28,10 @@ function AddAuthor() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await client.post('/authors', data);
-      if(res.status === 201) {
-        localStorage.setItem('token', res.data.token);
-        localStorage.setItem('user', JSON.stringify(res.data.user));
-        // navigate('/', { replace: true });
+        const user = JSON.parse(localStorage.getItem("user"))._id
+        const res = await client.post('/authors', {...data, user});
+        if(res.status === 201) {
+        
         window.location = ('/')
       }
 

@@ -16,18 +16,28 @@ function App() {
   useEffect(() => {
   
     getUsers()
-
+    getBooks()
     
   }, []);
+
+  const getBooks = async () => {
+    try {
+      const res = await client.get('/books')
+      if(res.status === 200) {
+        console.log("book list", res)
+      }
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
 
 
   const getUsers = async () => {
     const res = await client.get('/users');
-    console.log(res);
+    console.log("user list", res);
   }
 
-
-  console.log(user);
 
   if(user){
     return (

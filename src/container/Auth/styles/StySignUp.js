@@ -19,7 +19,7 @@ const container = sty.div`
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        background: ${colors.primary};
+        background: #C9AC8C;
         img{
             width: 300px;
             height: 482px;
@@ -29,6 +29,7 @@ const container = sty.div`
         .book_title {
             margin-top: 20px;
         }
+        
     }
     .form{
         width: 50%;
@@ -64,6 +65,9 @@ const container = sty.div`
         }
         label {
             color: ${colors.white};
+        }
+        .form__subtitle{
+            color: ${colors.white}
         }
     }
 `
