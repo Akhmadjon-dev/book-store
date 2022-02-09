@@ -9,7 +9,7 @@ import Button from '../../components/Button';
 
 
 
-function AddContent() {
+function AddBook() {
   const [data, setData] = useState({
     title: '',
     author: '',
@@ -74,4 +74,4 @@ function AddContent() {
   </Container>;
 }
 
-export default AddContent;
+export default AddBook;
