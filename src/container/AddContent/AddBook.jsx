@@ -5,6 +5,7 @@ import Container from "../Auth/styles/StySignUp";
 import noPhoto from "../../assets/img/no-photo.jpg";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import Swal from 'sweetalert2'
 
 function AddBook() {
   const [data, setData] = useState({
@@ -68,6 +69,12 @@ function AddBook() {
       const res = await client.post("/books", formData);
       if (res.status === 201) {
         console.log("successfully created");
+        Swal.fire({
+          title: 'Success!',
+          text: 'Book has been successfully created',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        })
       }
     } catch (error) {
       console.log(error);

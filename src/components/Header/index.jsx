@@ -4,6 +4,14 @@ import '../../App.css'
 import { Link } from 'react-router-dom';
 
 function Nav() {
+
+  const user = localStorage.getItem('user')
+
+  const signOutHandler = () => {
+    localStorage.clear()
+    window.location = ('/')
+  }
+
   return (
     <nav>
         <div className="container">
@@ -18,11 +26,20 @@ function Nav() {
                 <li>
                   <Link to="/home/authors">Authors</Link>
                 </li>
-                <li>
-                  <Link to="/books-add" >Forum</Link>
+                <li className="nav__forum">
+                  <p>Forum</p>
+                  <div className="nav__forum-links">
+                    <Link to="/add-book" >add book</Link>
+                    <Link to="/add-author" >add author</Link>
+                  </div>
                 </li>
                 <li>
                   profile
+                </li>
+                <li>
+                  {
+                    (user) && <button onClick={signOutHandler}>Sign out</button>
+                  }
                 </li>
             </ul>
 

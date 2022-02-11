@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 
@@ -13,25 +13,13 @@ import AddBook from './container/AddContent/AddBook';
 function App() {
   const user = localStorage.getItem('user')
 
+  const [books, setBooks] = useState([])
+
   useEffect(() => {
   
     getUsers()
-    getBooks()
     
   }, []);
-
-  const getBooks = async () => {
-    try {
-      const res = await client.get('/books')
-      if(res.status === 200) {
-        console.log("book list", res)
-      }
-    }
-    catch(error){
-      console.log(error)
-    }
-  }
-
 
   const getUsers = async () => {
     const res = await client.get('/users');

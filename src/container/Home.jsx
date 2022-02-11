@@ -7,6 +7,7 @@ import Authors from '../container/Authors';
 
 
 function Home() {
+
   return (
     <div>
         <Hero />

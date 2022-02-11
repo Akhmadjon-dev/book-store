@@ -8,7 +8,15 @@ function Hero() {
     <div className="Hero">
         <div className="container">
             <img src={ heroBanner } alt='Book store'/>
-            <h1>this is hero</h1>
+            <div className="container__search">
+                <form className="search__form">
+                    <h3>Search</h3>
+                    <div className="search__bar">
+                        <input type="search" className="hero-search" />
+                        <button>Search</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     )
