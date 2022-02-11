@@ -7,6 +7,8 @@ const colors = {
     inputBorder: "#B4B4BB",
     btnBg: "#152540",
     red: "#ff4081",
+    titleColor: "#C9AC8C",
 }
 
 export default colors;
+
