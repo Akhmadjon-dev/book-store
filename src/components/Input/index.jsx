@@ -5,7 +5,7 @@ import StyInput from './styInput';
 
 function Input(props) {
 
-  const {name, value, type, label, placeholder, onChange, error, isSelect, options} = props;
+  const {name, value, type, label, placeholder, onChange, error, isSelect, isCategory, options} = props;
 
   if(isSelect) {
     return (
@@ -17,12 +17,12 @@ function Input(props) {
             onChange={onChange} 
             id={name} 
             name={name} 
-            value={value}>
-              <option>select author</option>
+            >
+              <option>{ value }</option>
               { options?.map(item => (
                 <option 
                   key={ item._id } 
-                  value={ item._id }>{`${item.firstName} ${item.lastName}`}
+                  value={ isCategory ? item.type : item._id }>{isCategory ? `${item.name}` :`${item.firstName} ${item.lastName}`}
                 </option>
               )) }
             </select>

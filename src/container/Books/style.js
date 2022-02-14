@@ -10,6 +10,7 @@ const Container = styled.div`
         justify-content: center;
         gap: 20px;
         flex-wrap: wrap;
+        margin-top: 40px;
         .card {
             width: 165px;
             .card__title {

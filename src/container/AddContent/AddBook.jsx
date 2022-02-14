@@ -6,6 +6,8 @@ import noPhoto from "../../assets/img/no-photo.jpg";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Swal from 'sweetalert2'
+import { categories } from "../../components/Tabs";
+
 
 function AddBook() {
   
@@ -14,6 +16,7 @@ function AddBook() {
     author: "",
     pages: "",
     year: "",
+    category: "",
     price: "",
     country: "",
     description: "",
@@ -24,6 +27,7 @@ function AddBook() {
     author: "",
     pages: "",
     year: "",
+    category: "",
     price: "",
     country: "",
     description: "",
@@ -62,6 +66,8 @@ function AddBook() {
     setData({ ...data, [name]: value });
   };
 
+  console.log(data)
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -70,6 +76,7 @@ function AddBook() {
     formData.append('author', data.author);
     formData.append('pages', data.pages);
     formData.append('year', Date.parse(data.year));
+    formData.append('category', data.category);
     formData.append('price', data.price);
     formData.append('country', data.country);
     formData.append('description', data.description);
@@ -121,14 +128,15 @@ function AddBook() {
             type="text"
             value={title}
             placeholder="Enter title"
-            onChange={inputHandler}
+            onChange={ inputHandler }
           />
           <Input
-            name="author"
-            options={authors}
+            name="category"
+            options={ categories }
             isSelect
-            label="Author"
-            value="Select author"
+            isCategory
+            label="Category"
+            value="Select category"
             onChange={inputHandler}
           />
           <Input
@@ -145,6 +153,14 @@ function AddBook() {
             type="date"
             value={year}
             placeholder="Enter year"
+            onChange={inputHandler}
+          />
+          <Input
+            name="author"
+            options={authors}
+            isSelect
+            label="Author"
+            value="Select author"
             onChange={inputHandler}
           />
           <Input

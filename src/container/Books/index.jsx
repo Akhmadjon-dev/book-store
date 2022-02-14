@@ -25,11 +25,21 @@ function Books() {
     }
   }
 
+  const categoryHandler = async (type) => {
+    try{
+      const res = await client.get('/books/filter/'+type)
+      console.log('category', res)
+      setBooks(res.data.payload)
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+
   console.log("books", books)
   return <Container>
 
-      <Tabs />
-      <h2>books</h2>
+      <Tabs categoryHandler={ categoryHandler }/>
       <div className="cards">
         {
           books.map(book => (
