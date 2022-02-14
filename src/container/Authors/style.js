@@ -32,6 +32,11 @@ const Container = styled.div`
                 color: rgba(255, 255, 255, .6);
                 margin-bottom: 10px
             }
+            .card__media {
+                display: flex;
+                justify-content: space-around;
+                padding: 0 10px;
+            }
         }
         .card:hover {
             cursor: pointer;

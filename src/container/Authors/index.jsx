@@ -3,6 +3,8 @@ import Tabs from "../../components/Tabs";
 import client from "../../utils/axios";
 import noPhoto from "../../assets/img/no-photo.jpg";
 import Container from "./style";
+import { ImBook } from 'react-icons/im';
+import { ImHeadphones } from 'react-icons/im';
 
 function Authors() {
   const [authors, setAuthors] = useState([]);
@@ -36,6 +38,10 @@ function Authors() {
             <img src={noPhoto} />
             <p className="card__author">{`${author.firstName} ${author.lastName}`}</p>
             <p className="card__author-dates">{`${showYear(author.date_of_birth)}-${showYear(author.date_of_death)}`}</p>
+            <div className="card__media">
+              <p><ImBook /> 32</p>
+              <p><ImHeadphones /> 17</p>
+            </div>
           </div>
         ))}
       </div>
