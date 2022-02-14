@@ -8,6 +8,17 @@ import Button from "../../components/Button";
 import Swal from 'sweetalert2'
 
 function AddBook() {
+  
+  const initialData = {
+    title: "",
+    author: "",
+    pages: "",
+    year: "",
+    price: "",
+    country: "",
+    description: "",
+  };
+
   const [data, setData] = useState({
     title: "",
     author: "",
@@ -16,7 +27,6 @@ function AddBook() {
     price: "",
     country: "",
     description: "",
-    files: "",
   });
   //const navigate = useNavigate();
 
@@ -34,7 +44,7 @@ function AddBook() {
       if (res.status === 200) {
         setAuthors(res.data.payload);
       }
-      console.log("this is author from back", res.data.payload);
+      console.log("this is author", res.data.payload);
     } catch (error) {
       console.log(error);
     }
@@ -63,17 +73,23 @@ function AddBook() {
     formData.append('price', data.price);
     formData.append('country', data.country);
     formData.append('description', data.description);
-    formData.append('files', image);
+    // formData.append('files', image);
     console.log("form data", formData)
     try {
       const res = await client.post("/books", formData);
       if (res.status === 201) {
         console.log("successfully created");
         Swal.fire({
-          title: 'Success!',
-          text: 'Book has been successfully created',
-          icon: 'success',
-          confirmButtonText: 'Ok'
+          title: "Success!",
+          text: "Author has been successfully created",
+          icon: "success",
+          showCancelButton: true,
+          confirmButtonText: "Finished adding",
+          cancelButtonText: "Add more",
+        })
+        .then(({value}) => {
+          setData(initialData)
+          return value ? (window.location = "/") : null;
         })
       }
     } catch (error) {
