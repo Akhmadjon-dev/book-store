@@ -6,17 +6,31 @@ import noPhoto from "../../assets/img/no-photo.jpg";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Swal from 'sweetalert2'
+import { categories } from "../../components/Tabs";
+
 
 function AddBook() {
+  
+  const initialData = {
+    title: "",
+    author: "",
+    pages: "",
+    year: "",
+    category: "",
+    price: "",
+    country: "",
+    description: "",
+  };
+
   const [data, setData] = useState({
     title: "",
     author: "",
     pages: "",
     year: "",
+    category: "",
     price: "",
     country: "",
     description: "",
-    files: "",
   });
   //const navigate = useNavigate();
 
@@ -34,7 +48,7 @@ function AddBook() {
       if (res.status === 200) {
         setAuthors(res.data.payload);
       }
-      console.log("this is author from back", res.data.payload);
+      console.log("this is author", res.data.payload);
     } catch (error) {
       console.log(error);
     }
@@ -52,6 +66,8 @@ function AddBook() {
     setData({ ...data, [name]: value });
   };
 
+  console.log(data)
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -60,20 +76,27 @@ function AddBook() {
     formData.append('author', data.author);
     formData.append('pages', data.pages);
     formData.append('year', Date.parse(data.year));
+    formData.append('category', data.category);
     formData.append('price', data.price);
     formData.append('country', data.country);
     formData.append('description', data.description);
-    formData.append('files', image);
+    // formData.append('files', image);
     console.log("form data", formData)
     try {
       const res = await client.post("/books", formData);
       if (res.status === 201) {
         console.log("successfully created");
         Swal.fire({
-          title: 'Success!',
-          text: 'Book has been successfully created',
-          icon: 'success',
-          confirmButtonText: 'Ok'
+          title: "Success!",
+          text: "Author has been successfully created",
+          icon: "success",
+          showCancelButton: true,
+          confirmButtonText: "Finished adding",
+          cancelButtonText: "Add more",
+        })
+        .then(({value}) => {
+          setData(initialData)
+          return value ? (window.location = "/") : null;
         })
       }
     } catch (error) {
@@ -105,14 +128,15 @@ function AddBook() {
             type="text"
             value={title}
             placeholder="Enter title"
-            onChange={inputHandler}
+            onChange={ inputHandler }
           />
           <Input
-            name="author"
-            options={authors}
+            name="category"
+            options={ categories }
             isSelect
-            label="Author"
-            value="Select author"
+            isCategory
+            label="Category"
+            value="Select category"
             onChange={inputHandler}
           />
           <Input
@@ -129,6 +153,14 @@ function AddBook() {
             type="date"
             value={year}
             placeholder="Enter year"
+            onChange={inputHandler}
+          />
+          <Input
+            name="author"
+            options={authors}
+            isSelect
+            label="Author"
+            value="Select author"
             onChange={inputHandler}
           />
           <Input

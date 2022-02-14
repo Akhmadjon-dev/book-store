@@ -8,6 +8,10 @@ import Authors from '../container/Authors';
 
 function Home() {
 
+  const searchHandler = (value) => {
+    
+  }
+
   return (
     <div>
         <Hero />

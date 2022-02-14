@@ -1,5 +1,6 @@
 import React from 'react';
 import heroBanner from '../../assets/img/Frame_71.png'
+import { BiSearchAlt } from 'react-icons/bi';
 import './Hero.css'
 import '../../App.css'
 
@@ -13,7 +14,7 @@ function Hero() {
                     <h3>Search</h3>
                     <div className="search__bar">
                         <input type="search" className="hero-search" />
-                        <button>Search</button>
+                        <button>Search <BiSearchAlt /></button>
                     </div>
                 </form>
             </div>
