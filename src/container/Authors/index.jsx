@@ -25,12 +25,23 @@ function Authors() {
     }
   };
 
+  const categoryHandler = async (type) => {
+    try{
+      const res = await client.get('/authors/filter/'+type)
+      console.log('category', res)
+      setAuthors(res.data.payload)
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+
   const showYear = (year) => new Date(year).getFullYear();
   
 
   return (
     <Container>
-      <Tabs />
+      <Tabs isAuthor categoryHandler = { categoryHandler } fetchAll = { getAuthors }/>
 
       <div className="cards">
         {authors.map((author) => (

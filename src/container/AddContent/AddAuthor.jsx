@@ -6,6 +6,7 @@ import noPhoto from "../../assets/img/no-photo.jpg";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Swal from "sweetalert2";
+import { authorCategory } from "../../components/Tabs"
 
 function AddAuthor() {
   const initialData = {
@@ -51,7 +52,7 @@ function AddAuthor() {
     }
   };
 
-  const { firstName, lastName, date_of_birth, date_of_death } = data;
+  const { firstName, lastName, date_of_birth, date_of_death,  } = data;
 
   return (
     <Container>
@@ -94,6 +95,15 @@ function AddAuthor() {
             type="date"
             value={date_of_death}
             placeholder="Enter date of death"
+            onChange={inputHandler}
+          />
+          <Input
+            name="category"
+            options={authorCategory}
+            isSelect
+            isCategory
+            label="Category"
+            value="Select category"
             onChange={inputHandler}
           />
           <Button title="Create" type={"submit"} />

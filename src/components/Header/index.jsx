@@ -34,7 +34,7 @@ function Nav() {
                   </div>
                 </li>
                 <li>
-                  profile
+                  <Link to="/profile" >profile</Link>
                 </li>
                 <li>
                   {

@@ -14,7 +14,10 @@ const Container = styled.div`
         gap: 40px;
         margin-top: 20px;
     }
-
+    li {
+        cursor: pointer;
+    }
+    
 `
 
 export default Container
