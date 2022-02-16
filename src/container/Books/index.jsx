@@ -39,7 +39,7 @@ function Books() {
   console.log("books", books)
   return <Container>
 
-      <Tabs categoryHandler={ categoryHandler }/>
+      <Tabs categoryHandler={ categoryHandler } fetchAll={ getBooks }/>
       <div className="cards">
         {
           books.map(book => (

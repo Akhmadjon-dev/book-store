@@ -5,12 +5,10 @@ const Container = styled.div`
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px 20px;
-    label {
-        color: #fff;
-    }
     img {
         width: 200px;
         border-radius: 50%;
+        margin: 20px 0;
     }
     .profile__my-account {
         display: flex;

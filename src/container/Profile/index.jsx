@@ -24,12 +24,39 @@ function Profile() {
     }
 
     
-    const submitHandler = (e) => {
-          e.preventDefault();
-
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        
+        try {
+            const res = await client.patch('/users', {...profile, image: "img"})
+            if(res.status = 200) {
+                console.log(res);
+                localStorage.setItem('user', JSON.stringify(res.data.payload))
+                //localStorage.setItem('token', res)
+                
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
     } 
 
-    console.log(localStorage.getItem('user'))
+    const getUser = () => {
+        const user = JSON.parse(localStorage.getItem('user'))
+        const { firstName, lastName, phone, email } = user
+        setProfile( 
+            {
+                firstName,
+                lastName,
+                phone,
+                email,
+            }
+         )
+    }
+
+    useEffect(() => {
+        getUser()
+    }, [])
 
     const { firstName, lastName, phone, email } = profile;
     return <Container>
