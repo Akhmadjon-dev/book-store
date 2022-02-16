@@ -5,6 +5,24 @@ import Container from './style';
 
 function Profile() {
     
+    const [profile, setProfile] = useState({
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: "",
+      });
+
+    
+    
+    const inputHandler = (e) => {
+            const { name, value} = e.target;
+            setProfile({ ...profile, [name]: value })
+      }
+
+    const submitHandler = (e) => {
+          e.preventDefault();
+
+      } 
 
     return <Container>
         <div className="profile__my-account">
@@ -12,10 +30,29 @@ function Profile() {
                 <img src={noPhoto} />
             </div>
             <div className="profile__form">
-                <h3>My profile</h3>
-                <form>
-                    
+                <form onSubmit={submitHandler} className="form">
+                    <h3>My profile</h3>
+                    <div className="form__group">
+                        <Input
+                            name="firstName"
+                            label="First name"
+                            type="text"
+                            value={firstName}
+                            placeholder="Enter first name"
+                            onChange={inputHandler}
+                        />
+                        <Input
+                            name="lastName"
+                            label="Last name"
+                            type="text"
+                            value={lastName}
+                            placeholder="Enter last name"
+                            onChange={inputHandler}
+                        />
+                        <Button title="Save changes" type={"submit"} />
+                </div>
                 </form>
+                
             </div> 
         </div>
         <div className="profile__security">
