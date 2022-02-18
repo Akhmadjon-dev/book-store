@@ -13,8 +13,8 @@ function Home() {
 
   const searchHandler = async (value) => {
     try{
-      const res = await client.get('/books/filter/'+value)
-      console.log('category', res)
+      const res = await client.get('/books/search/'+value)
+      console.log('searched - ', res)
       setSearchData(res.data.payload)
     }
     catch (err) {
@@ -24,8 +24,7 @@ function Home() {
 
   return (
     <div>
-        <Hero  />
-        <Search searchHandler={searchHandler} />
+        <Hero  searchHandler={searchHandler} />
         <Routes>
           <Route path="/books" element={<Books />} />
           <Route path="/authors" element={<Authors />} />

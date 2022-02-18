@@ -8,7 +8,7 @@ function Books() {
 
   const [books, setBooks] = useState([])
 
-  useEffect(() => {
+    useEffect(() => {
     getBooks()
   }, [])
 
