@@ -27,9 +27,12 @@ function Books(props) {
 
   const categoryHandler = async (type) => {
     try{
-      const res = await client.get('/books/filter/'+type)
-      console.log('category', res)
-      setBooks(res.data.payload)
+      if(type==='all'){
+        getBooks()
+      } else {
+        const res = await client.get('/books/filter/'+type)
+        setBooks(res.data.payload)
+      }
     }
     catch (err) {
       console.log(err)

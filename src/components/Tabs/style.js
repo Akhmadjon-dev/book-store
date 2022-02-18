@@ -17,6 +17,14 @@ const Container = styled.div`
     li {
         cursor: pointer;
     }
+    // .tabs__li{
+    //     color: blue;
+    // }
+    .tabs__li--active{
+        color: ${color.primary};
+        background: rgba(255, 255, 255, .5);
+        border-radius: 4px; 
+    }
     
 `
 
