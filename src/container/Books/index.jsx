@@ -4,11 +4,11 @@ import client from "../../utils/axios";
 import noPhoto from "../../assets/img/no-photo.jpg";
 import Container from './style';
 
-function Books() {
-
+function Books(props) {
+  console.log(props.data);
   const [books, setBooks] = useState([])
 
-  useEffect(() => {
+    useEffect(() => {
     getBooks()
   }, [])
 
@@ -42,7 +42,7 @@ function Books() {
       <Tabs categoryHandler={ categoryHandler } fetchAll={ getBooks }/>
       <div className="cards">
         {
-          books.map(book => (
+          (props.data.length ? props.data : books).map(book => (
             <div className="card" key={book._id}>
               <img src={noPhoto}/>
               <h4 className="card__title">{book.title}</h4>
