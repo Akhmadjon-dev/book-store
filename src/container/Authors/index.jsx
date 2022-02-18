@@ -27,9 +27,12 @@ function Authors() {
 
   const categoryHandler = async (type) => {
     try{
-      const res = await client.get('/authors/filter/'+type)
-      console.log('category', res)
-      setAuthors(res.data.payload)
+      if(type ==='all'){
+        getAuthors();
+      } else {
+        const res = await client.get('/authors/filter/'+type)
+        setAuthors(res.data.payload)
+      }
     }
     catch (err) {
       console.log(err)
