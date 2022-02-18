@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Hero  from '../components/Hero';
-import Search from '../components/Search';
 import Books from '../container/Books';
 import Authors from '../container/Authors';
 import client from "../utils/axios";
@@ -9,7 +8,7 @@ import client from "../utils/axios";
 
 function Home() {
 
-  const [searchData, setSearchData] = useState()
+  const [searchData, setSearchData] = useState([])
 
   const searchHandler = async (value) => {
     try{
@@ -18,17 +17,19 @@ function Home() {
       setSearchData(res.data.payload)
     }
     catch (err) {
+      setSearchData([])
       console.log(err)
     }
   }
 
   return (
     <div>
-        <Hero  searchHandler={searchHandler} />
+        <Hero searchHandler={ searchHandler } />
         <Routes>
-          <Route path="/books" element={<Books />} />
+          <Route path="/books" element={<Books data={ searchData }/>} />
           <Route path="/authors" element={<Authors />} />
         </Routes>
+
     </div>
   )
 }
