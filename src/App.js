@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 
@@ -7,27 +7,26 @@ import SignIn from './container/Auth/SignIn'
 import Home from './container/Home'
 import Header from './components/Header'
 import client from './utils/axios'
-import Add from './container/Add'
-
+import AddAuthor from './container/AddContent/AddAuthor';
+import AddBook from './container/AddContent/AddBook';
+import Profile from './container/Profile';
 
 function App() {
   const user = localStorage.getItem('user')
 
+  const [books, setBooks] = useState([])
+
   useEffect(() => {
   
     getUsers()
-
     
   }, []);
 
-
   const getUsers = async () => {
     const res = await client.get('/users');
-    console.log(res);
+    console.log("user list", res);
   }
 
-
-  console.log(user);
 
   if(user){
     return (
@@ -38,6 +37,9 @@ function App() {
           <Route path="/form" element={<Add />} />
           <Route path="/not-found" element={<h3>Not Found</h3>} />
           <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="/add-book" element={<AddBook />} />
+          <Route path="/add-author" element={<AddAuthor />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Fragment>
     )

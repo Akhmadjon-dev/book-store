@@ -27,3 +27,35 @@ nav .container, .nav__links {
     border-bottom: 1px solid #fff;
     cursor: pointer;
 }
+
+.nav__forum {
+    position: relative;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; 
+}
+
+.nav__forum .nav__forum-links{
+    display: none;
+    position: absolute;
+    padding: 10px;
+    background: rgba(25, 25, 25, .7);
+    /* border: 1px solid #fff; */
+    z-index: 100;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.nav__forum:hover .nav__forum-links {
+    display: block;
+}
+
+.nav__forum .nav__forum-links > * {
+    display: block;
+}
+
+.nav__forum .nav__forum-links > a:hover {
+    text-decoration: underline;
+}
