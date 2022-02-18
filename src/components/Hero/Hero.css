@@ -15,7 +15,6 @@
     width: 100%;
 }
 
-
 .container__search {
     width: 75%;
     background: #191919;
@@ -28,26 +27,10 @@
 .container__search form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-}
-
-.container__search form h3{
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.search__bar {
-    display: flex;
-    gap: 10px;
-
-}
-
-.search__bar button {
-    cursor: pointer;
 }
 
 .container__search input {
-    width: 80%;
+    width: 100%;
     background: #404040;
     color: rgba(255, 255, 255, .3);
     outline: none;

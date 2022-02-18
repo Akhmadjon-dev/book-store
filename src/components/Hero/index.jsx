@@ -34,7 +34,7 @@ function Hero(props) {
                 onChange={changeHandler}
               />
               <button>
-                Search <BiSearchAlt /> 
+                Search <BiSearchAlt />
               </button>
             </div>
           </form>
