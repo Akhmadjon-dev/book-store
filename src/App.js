@@ -10,11 +10,9 @@ import client from './utils/axios'
 import AddAuthor from './container/AddContent/AddAuthor';
 import AddBook from './container/AddContent/AddBook';
 import Profile from './container/Profile';
-
+ 
 function App() {
   const user = localStorage.getItem('user')
-
-  const [books, setBooks] = useState([])
 
   useEffect(() => {
   
